@@ -1,0 +1,61 @@
+﻿<Window x:Class="WPFSistema.CadastroCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSistema"
+        mc:Ignorable="d"
+        Title="CadastroCliente" Height="300" Width="300">
+    <Grid Margin="0,0,2,3" RenderTransformOrigin="0.508,0.567">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
+        <StackPanel Grid.Row="0" Margin="10,70,10,169">
+            <DockPanel>
+                <TextBlock Text="Nome" Style="{StaticResource estiloTextBlock}" />
+                <TextBox x:Name="txtNome"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="CPF" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtCPF"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Telefone" Style="{StaticResource estiloTextBlock}" />
+                <TextBox x:Name="txtTelefone" MaxLength="10" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Rua" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtRua"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Número" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtNumero"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Bairro" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtBairro"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Complemento" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtComplemento"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Referência" Style="{StaticResource estiloTextBlock}"/>
+                <TextBox x:Name="txtReferencia"/>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
+            <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Height="30" FontFamily="Arial" FontSize="18"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+        </StackPanel>
+        <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
+        <Canvas/>
+
+    </Grid>
+
+</Window>
