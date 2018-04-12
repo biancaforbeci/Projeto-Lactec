@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controllers;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +25,31 @@ namespace WPFSistema
         {
             InitializeComponent();
         }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            //Criando novo cliente e chamando o método de salvar
+            Cliente cliente = SalvaCliente();
+            ClienteController.SalvarCliente(cliente);            
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            //fechando tela de cadastro e voltando a tela principal.
+            MainWindow telaPrincipal = new MainWindow();
+            this.Close();
+            telaPrincipal.ShowDialog();
+        }
+
+        private Cliente SalvaCliente()
+        {
+            //Criando novo cliente e adicionando cada TextBox aos atributos.
+            Cliente cli = new Cliente();
+            cli.Nome = txtNome.Text;
+            cli.Idade = int.Parse(txtIdade.Text);
+            cli.Telefone = txtTelefone.Text;
+            return cli;
+        }
+
     }
 }

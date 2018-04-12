@@ -61,7 +61,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BuscaClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CadastroCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExcluirCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListagemClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -73,8 +85,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BuscaClientes.xaml.cs">
+      <DependentUpon>BuscaClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CadastroCliente.xaml.cs">
       <DependentUpon>CadastroCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExcluirCliente.xaml.cs">
+      <DependentUpon>ExcluirCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListagemClientes.xaml.cs">
+      <DependentUpon>ListagemClientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -108,7 +129,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{878C8747-480F-4361-B98A-8C26AF08079E}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{480FB8EE-B9C1-44E1-9BFD-73078F7D474F}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagem\logos-lactec-v1.png" />
   </ItemGroup>

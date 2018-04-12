@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
-        Title="CadastroCliente" Height="300" Width="300">
-    <Grid Margin="0,0,2,3" RenderTransformOrigin="0.508,0.567">
+        Title="CadastroCliente" Style="{StaticResource estiloJanela}">
+
+    <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -14,47 +15,17 @@
         </Grid.RowDefinitions>
 
         <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
-        <StackPanel Grid.Row="0" Margin="10,70,10,169">
-            <DockPanel>
-                <TextBlock Text="Nome" Style="{StaticResource estiloTextBlock}" />
-                <TextBox x:Name="txtNome"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="CPF" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtCPF"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Telefone" Style="{StaticResource estiloTextBlock}" />
-                <TextBox x:Name="txtTelefone" MaxLength="10" />
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Rua" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtRua"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Número" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtNumero"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Bairro" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtBairro"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Complemento" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtComplemento"/>
-            </DockPanel>
-            <DockPanel>
-                <TextBlock Text="Referência" Style="{StaticResource estiloTextBlock}"/>
-                <TextBox x:Name="txtReferencia"/>
-            </DockPanel>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
-            <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
-            <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Height="30" FontFamily="Arial" FontSize="18"/>
-            <Button x:Name="btnVoltar" Content="Voltar" Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
-        </StackPanel>
-        <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
-        <Canvas/>
+        <Canvas>
+            <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="103" FontFamily="Arial" FontSize="18" RenderTransformOrigin="1.192,0.679"/>
+            <Label Content="Idade" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="172" Canvas.Top="156" FontSize="18" FontFamily="Arial"/>
+            <Label Content="Telefone" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="216" RenderTransformOrigin="0.38,0.52" FontSize="18" FontFamily="Arial"/>
+            <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top" Canvas.Left="207" Canvas.Top="10"/>
+            <TextBox x:Name="txtNome" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="111" Width="120"/>
+            <TextBox x:Name="txtIdade" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="164" Width="120"/>
+            <TextBox x:Name="txtTelefone" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="224" Width="120"/>
+            <Button x:Name="btnSalvar" Content="Salvar" Canvas.Left="172" Canvas.Top="328" Width="75" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="364" Canvas.Top="328" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+        </Canvas>
 
     </Grid>
 

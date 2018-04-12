@@ -6,26 +6,9 @@
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource estiloJanela}">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF50A3DC" Offset="0.035"/>
-                <GradientStop Color="#FFB9BFAF" Offset="0.591"/>
-                <GradientStop Color="#FFB9BFAF" Offset="0.932"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" ></ColumnDefinition>
-            <ColumnDefinition Width="2*" ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid>   
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Menu Width="410" 
+        <Menu Width="332" 
         Height="50"
         Margin="10,10,0,0" 
         VerticalAlignment="Top"
@@ -34,9 +17,9 @@
         BorderThickness="3" Grid.ColumnSpan="2">
             <Menu.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4494F3" Offset="0.077"/>
-                    <GradientStop Color="#FFEBF1FB" Offset="0.834"/>
-                    <GradientStop Color="#FFEBF1FB" Offset="0.387"/>
+                    <GradientStop Color="#FF4494F3" Offset="0.087"/>
+                    <GradientStop Color="#FFEBF1FB" Offset="0.743"/>
+                    <GradientStop Color="#FF8CE25A" Offset="0.378"/>
                 </LinearGradientBrush>
             </Menu.Background>
 
@@ -53,23 +36,23 @@
                     </ItemsPanelTemplate>
 
                 </MenuItem.ItemsPanel>
-                <MenuItem x:Name="ItemCadastrar" Header="Cadastrar" IsCheckable="true" FontSize="16" FontFamily="Arial" />
-                <MenuItem x:Name="ItemExcluir" Header="Excluir" IsCheckable="true" />
+                <MenuItem x:Name="ItemCadastrar" Header="Cadastrar" IsCheckable="true" FontSize="16" FontFamily="Arial" Click="ItemCadastrar_Click" />
+                <MenuItem x:Name="ItemExcluir" Header="Excluir" IsCheckable="true" Click="ItemExcluir_Click" />
             </MenuItem>
 
-            <MenuItem Header="Área de Busca de Cliente" FontFamily="Arial" FontSize="16">
-                <MenuItem x:Name="ItemBuscaID" Header="Busca por ID"/>
-                <MenuItem x:Name="ItemListasClientes" Header="Listagem de Clientes"/>
+            <MenuItem Header="Área de Busca" FontFamily="Arial" FontSize="16">
+                <MenuItem x:Name="ItemBuscaClientes" Header="Buscar Clientes" Click="ItemBuscaClientes_Click"/>
+                <MenuItem x:Name="ItemListasClientes" Header="Listagem de Clientes" Click="ItemListasClientes_Click"/>
             </MenuItem>
 
-            <MenuItem x:Name="btnSair" Header="Sair" FontFamily="Arial" FontSize="16" Margin="0,0,-22,0" Click="btnSair_Click" />
+            <MenuItem x:Name="btnSair" Header="Sair" FontFamily="Arial" FontSize="16" Margin="0,0,-47,0" Click="btnSair_Click" />
 
         </Menu>
 
 
         <Canvas HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
             <Image Height="206" Width="475" Source="Imagem/logos-lactec-v1.png" HorizontalAlignment="Left" Canvas.Left="54" Canvas.Top="88"/>
-            <Label Content="Bem-Vindo" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="97"/>
+            <Label Content="Bem-Vindo" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontFamily="Arial" Canvas.Left="97" FontStyle="Italic"/>
         </Canvas>
 
     </Grid>

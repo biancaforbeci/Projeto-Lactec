@@ -9,14 +9,13 @@ namespace Controllers
 {
     public class ClienteController
     {
-        public void SalvarCliente(Cliente cliente)
-        {
-
+        public static void SalvarCliente(Cliente cliente)
+        {            
             ContextoSingleton.Instancia.Clientes.Add(cliente);
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public Cliente PesquisarPorNome(string nome)
+        public static Cliente PesquisarPorNome(string nome)
         {
             var c = from x in ContextoSingleton.Instancia.Clientes
                     where x.Nome.ToLower().Contains(nome.Trim().ToLower())
@@ -28,12 +27,12 @@ namespace Controllers
                 return null;
         }
 
-        public Cliente PesquisarPorID(int idCliente)
+        public static Cliente PesquisarPorID(int idCliente)
         {
             return ContextoSingleton.Instancia.Clientes.Find(idCliente);
         }
 
-        public void ExcluirCliente(int idCliente)
+        public static void ExcluirCliente(int idCliente)
         {
 
             Cliente c = ContextoSingleton.Instancia.Clientes.Find(idCliente);
@@ -44,9 +43,10 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public List<Cliente> ListarClientes()
+        public static List<Cliente> ListarClientes()
         {
-            return ContextoSingleton.Instancia.Clientes.ToList();
+            return ContextoSingleton.Instancia.Clientes.SqlQuery
+                ("SELECT ClienteID,Nome FROM Clientes").ToList();                
         }
        
     }
