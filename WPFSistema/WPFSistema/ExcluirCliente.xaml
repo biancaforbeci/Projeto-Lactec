@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
-        Title="ExcluirCliente" Height="300" Width="300">
+        Title="ExcluirCliente" Style="{StaticResource estiloJanela}">
     <Grid>
-        
+        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
+            <CheckBox x:Name="checkID" Content="Exclusão por ID" Canvas.Left="34" Canvas.Top="108" RenderTransformOrigin="0.495,-0.257" FontSize="14" Checked="checkID_Checked" FontFamily="Arial"/>
+            <CheckBox x:Name="checkNome" Content="Exclusão por Nome" Canvas.Left="167" Canvas.Top="108" FontSize="14" FontFamily="Arial" Checked="checkNome_Checked"/>
+            <TextBox x:Name="txtCampo" Height="23" Canvas.Left="314" TextWrapping="Wrap" Canvas.Top="100" Width="228"/>
+            <Label Content="Buscar Cliente" Canvas.Left="235" Canvas.Top="10" Width="224" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <DataGrid x:Name="gridMostrar" AutoGenerateColumns="False" SelectionMode="Single" Canvas.Left="72" Canvas.Top="137" Height="197" Width="541" SelectionChanged="gridMostrar_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
+                    <DataGridTextColumn Header="Idade" Binding="{Binding Path=Idade}"/>
+                    <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Critério de Exclusão" RenderTransformOrigin="1.703,1.523" Canvas.Left="83" Canvas.Top="63" Width="156" FontFamily="Arial" FontSize="16"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="295" Canvas.Top="345" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+            <Button x:Name="btnProcurar" Content="Procurar" Canvas.Left="565" Canvas.Top="100" Width="75" FontFamily="Arial" FontSize="16" Height="32" Click="btnProcurar_Click"/>
+        </Canvas>
+
     </Grid>
 </Window>

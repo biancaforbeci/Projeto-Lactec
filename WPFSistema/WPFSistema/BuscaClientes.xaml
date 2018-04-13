@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
-        Title="BuscaClientes" Height="300" Width="300">
+        Title="BuscaClientes" Style="{StaticResource estiloJanela}">
     <Grid>
-        
+        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
+            <CheckBox x:Name="checkID" Content="Busca por ID" Canvas.Left="55" Canvas.Top="108" RenderTransformOrigin="0.495,-0.257" FontSize="14" Checked="checkID_Checked" FontFamily="Arial"/>
+            <CheckBox x:Name="checkNome" Content="Busca por Nome" Canvas.Left="171" Canvas.Top="108" FontSize="14" FontFamily="Arial" Checked="checkNome_Checked"/>
+            <TextBox x:Name="txtCampo" Height="23" Canvas.Left="314" TextWrapping="Wrap" Canvas.Top="100" Width="299"/>
+            <Label Content="Buscar Cliente" Canvas.Left="235" Canvas.Top="10" Width="224" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+            <DataGrid x:Name="gridMostrar" AutoGenerateColumns="False" Canvas.Left="72" Canvas.Top="153" Height="180" Width="541">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
+                    <DataGridTextColumn Header="Idade" Binding="{Binding Path=Idade}"/>
+                    <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Critério de Busca" RenderTransformOrigin="1.703,1.523" Canvas.Left="110" Canvas.Top="69" Width="140" FontFamily="Arial" FontSize="16"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="296" Canvas.Top="350" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+        </Canvas>
+
     </Grid>
 </Window>
