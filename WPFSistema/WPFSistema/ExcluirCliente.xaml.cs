@@ -24,6 +24,8 @@ namespace WPFSistema
         public ExcluirCliente()
         {
             InitializeComponent();
+            txtCampo.IsEnabled = false;
+            btnProcurar.IsEnabled = false;
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -37,51 +39,82 @@ namespace WPFSistema
         private void checkID_Checked(object sender, RoutedEventArgs e)
         {
             checkNome.IsEnabled = false;
+            txtCampo.IsEnabled = true;
+            btnProcurar.IsEnabled = true;
         }
 
         private void checkNome_Checked(object sender, RoutedEventArgs e)
         {
-            checkID.IsEnabled = false;           
+            checkID.IsEnabled = false;
+            txtCampo.IsEnabled = true;
+            btnProcurar.IsEnabled = true;
         }
 
         private void VerificaExistencia(List<Cliente> cli)
         {
-            if(cli.Count > 0)
+            if (cli.Count > 0)
             {
                 gridMostrar.ItemsSource = cli;
             }
             else
             {
                 MessageBox.Show("Cliente não encontrado !");
-                this.Close();
                 MainWindow telaPrincipal = new MainWindow();
                 telaPrincipal.ShowDialog();
+                this.Close();
             }
-
         }
 
         private void btnProcurar_Click(object sender, RoutedEventArgs e)
         {
-            if (checkNome.IsEnabled == true)
+            if (txtCampo.Text != null)
             {
-                List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
-                VerificaExistencia(cli);
+                if (checkNome.IsEnabled == true)
+                {
+                    List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
+                    VerificaExistencia(cli);
+                }
+                else
+                {
+                    List<Cliente> listaID = ClienteController.ClienteListaID(int.Parse(txtCampo.Text));
+                    VerificaExistencia(listaID);
+                }
             }
             else
             {
-             //   List<Cliente> cli = ClienteController.PesquisarPorID(int.Parse(txtCampo.Text));
-             //   VerificaExistencia(cli);
+                MessageBox.Show("Erro, campo em branco !", "ERRO");
             }
-            
         }
 
         private void gridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (gridMostrar.SelectedItem != null)
             {
-                
-            //    ClienteController.ExcluirCliente(g)
+                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridMostrar.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        int id = ((Cliente)gridMostrar.SelectedItem).ClienteID;
+                        ClienteController.ExcluirCliente(id);
+                        MessageBox.Show("Cliente excluído com sucesso");
+                    }
+                    catch(Exception erro)
+                    {
+                        MessageBox.Show("ERRO: " + erro);
+                    }
+                }
             }
+        }
+
+        private void checkID_Unchecked(object sender, RoutedEventArgs e)
+        {
+            checkNome.IsEnabled = true;
+        }
+
+        private void checkNome_Unchecked(object sender, RoutedEventArgs e)
+        {
+            checkID.IsEnabled = true;
         }
     }
 }

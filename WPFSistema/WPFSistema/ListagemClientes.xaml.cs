@@ -37,8 +37,13 @@ namespace WPFSistema
         private void btnListarSimples_Click(object sender, RoutedEventArgs e)
         {
             btnListarPorIdade.IsEnabled = false;   //desabilitando botão de listar por ordenação
-            List<Cliente> lista =ClienteController.ListarClientes();   // instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
-            gridMostrar.ItemsSource = lista; //enviando lista para datagrid.
+            List<Cliente> lista =ClienteController.RetornaItens();// instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
+            var novaListUsuario = lista.Select(Cliente => new
+            {
+                ClienteID = Cliente.ClienteID,
+                Nome = Cliente.Nome                
+            }).ToList();
+            gridMostrar.DataContext = novaListUsuario; //enviando lista para datagrid.
         }
 
         private void btnListarPorIdade_Click(object sender, RoutedEventArgs e)

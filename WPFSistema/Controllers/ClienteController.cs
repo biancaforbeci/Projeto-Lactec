@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,21 +44,32 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static List<Cliente> ListarClientes()
-        {
-            var clientes = ContextoSingleton.Instancia.Clientes.SqlQuery("SELECT ClienteID, Nome from Clientes").ToList();
-
-            return clientes;
-
-        }
-
         public static List<Cliente> ListarPorOrdenacao()
-       {
+        {
             var clientes = (from x in ContextoSingleton.Instancia.Clientes
                            orderby x.Idade
                            select x).ToList();
 
             return clientes;
+        }
+
+        public static List<Cliente> RetornaItens()
+        {
+            var result = ContextoSingleton.Instancia.Clientes.SqlQuery(@"SELECT ClienteID, Nome from Clientes").ToList();
+                       
+            return result;
+        }
+
+        public static List<Cliente> ClienteListaID(int id)
+        {
+            var c = from x in ContextoSingleton.Instancia.Clientes
+                    where x.ClienteID.Equals(id)
+                    select x;
+
+            if (c != null)
+                return c.ToList();
+            else
+                return null;
         }
 
     }
