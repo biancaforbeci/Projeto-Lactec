@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
         Title="BuscaClientes" Style="{StaticResource estiloJanela}">
+
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
-            <CheckBox x:Name="checkID" Content="Busca por ID" Canvas.Left="55" Canvas.Top="108" RenderTransformOrigin="0.495,-0.257" FontSize="14" Checked="checkID_Checked" FontFamily="Arial"/>
-            <CheckBox x:Name="checkNome" Content="Busca por Nome" Canvas.Left="171" Canvas.Top="108" FontSize="14" FontFamily="Arial" Checked="checkNome_Checked"/>
-            <TextBox x:Name="txtCampo" Height="23" Canvas.Left="314" TextWrapping="Wrap" Canvas.Top="100" Width="299"/>
+
+        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650" Grid.ColumnSpan="2">
+            <CheckBox x:Name="checkID" Content="Busca por ID" Canvas.Left="55" Canvas.Top="54" RenderTransformOrigin="0.495,-0.257" FontSize="14" Checked="checkID_Checked" FontFamily="Arial"/>
+            <CheckBox x:Name="checkNome" Content="Busca por Nome" Canvas.Left="441" Canvas.Top="57" FontSize="14" FontFamily="Arial" Checked="checkNome_Checked"/>
+            <TextBox x:Name="txtCampo" Height="23" Canvas.Left="441" TextWrapping="Wrap" Canvas.Top="92" Width="172"/>
             <Label Content="Buscar Cliente" Canvas.Left="235" Canvas.Top="10" Width="224" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
-            <DataGrid x:Name="gridMostrar" AutoGenerateColumns="False" Canvas.Left="72" Canvas.Top="153" Height="180" Width="541">
+            <DataGrid x:Name="gridMostrar" AutoGenerateColumns="False" Canvas.Left="372" Canvas.Top="189" Height="140" Width="268">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
@@ -20,8 +22,21 @@
                     <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Critério de Busca" RenderTransformOrigin="1.703,1.523" Canvas.Left="110" Canvas.Top="69" Width="140" FontFamily="Arial" FontSize="16"/>
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="296" Canvas.Top="350" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="353" Canvas.Top="345" Width="75" FontFamily="Arial" FontSize="14" Click="btnVoltar_Click" RenderTransformOrigin="0.73,-3.001" Height="25"/>
+            <Button x:Name="btnPesquisaNome" Content="Pesquisar por nome" Canvas.Left="441" Canvas.Top="144" Width="147" Height="25" FontFamily="Arial" FontSize="14" Click="btnPesquisaNome_Click"/>
+            <TextBox x:Name="txtCampoID" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="92" Canvas.Top="92"/>
+            <Button x:Name="btnPesquisaID" Content="Pesquisar por ID" Width="138" Canvas.Left="92" Canvas.Top="144" Height="25" FontFamily="Arial" FontSize="14" Click="btnPesquisaID_Click"/>
+            <Label Content="Nome" Canvas.Left="55" Canvas.Top="234" Width="72" RenderTransformOrigin="0.823,0.15"/>
+            <Label Content="Idade" Canvas.Left="55" Canvas.Top="275" Width="56" RenderTransformOrigin="0.581,1.437"/>
+            <Label Content="Telefone" Canvas.Left="55" Canvas.Top="309" RenderTransformOrigin="0.363,-0.431"/>
+            <Label Content="ID" Canvas.Left="76" Canvas.Top="189" RenderTransformOrigin="-0.226,0.54"/>
+            <TextBox x:Name="txtIDResult" Height="23" Canvas.Left="141" TextWrapping="Wrap" Canvas.Top="192" Width="120" Text="{Binding Path= ClienteID}"/>
+            <TextBox x:Name="txtNomeResult" Height="23" Canvas.Left="141" TextWrapping="Wrap" Canvas.Top="234" Width="120" Text="{Binding Path= Nome}"/>
+            <TextBox x:Name="txtIdadeResult" Height="23" Canvas.Left="141" TextWrapping="Wrap" Canvas.Top="278" Width="120" Text="{Binding Path= Idade}" />
+            <TextBox x:Name="txtTelefoneResult" Height="23" Canvas.Left="141" TextWrapping="Wrap" Canvas.Top="312" Width="120" Text="{Binding Path= Telefone}" />
+            <Label Content="ID" Canvas.Left="39" Canvas.Top="89" FontFamily="Arial" FontSize="14"/>
+            <Label Content="Nome" Canvas.Left="381" Canvas.Top="92" FontFamily="Arial" FontSize="14"/>
+            <Button x:Name="btnInicializar" Content="Buscar Novamente" Canvas.Left="208" Canvas.Top="345" Width="135" FontFamily="Arial" FontSize="14" Height="25" Click="btnInicializar_Click"/>
         </Canvas>
 
     </Grid>

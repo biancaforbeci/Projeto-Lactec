@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSistema", "WPFSistema\WPFSistema.csproj", "{67724DD9-9ED3-457D-B778-1136AF71FA68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFViews", "WPFSistema\WPFViews.csproj", "{67724DD9-9ED3-457D-B778-1136AF71FA68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{480FB8EE-B9C1-44E1-9BFD-73078F7D474F}"
 EndProject

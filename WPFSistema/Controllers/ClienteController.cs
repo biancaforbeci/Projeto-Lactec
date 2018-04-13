@@ -27,10 +27,9 @@ namespace Controllers
                 return null;
         }
 
-        public static void PesquisarPorID(int idCliente)
+        public static Cliente PesquisarPorID(int idCliente)
         {
-          //  List<Cliente> cli = ContextoSingleton.Instancia.Clientes.Find(idCliente);
-          //  return 
+         return ContextoSingleton.Instancia.Clientes.Find(idCliente);
         }
 
         public static void ExcluirCliente(int idCliente)
@@ -52,10 +51,14 @@ namespace Controllers
 
         }
 
-      //  public static List<Cliente> ListarPorOrdenacao()
-        //{
+        public static List<Cliente> ListarPorOrdenacao()
+       {
+            var clientes = (from x in ContextoSingleton.Instancia.Clientes
+                           orderby x.Idade
+                           select x).ToList();
 
-        //}
+            return clientes;
+        }
 
     }
 }

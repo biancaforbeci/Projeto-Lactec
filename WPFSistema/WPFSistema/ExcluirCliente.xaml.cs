@@ -80,7 +80,7 @@ namespace WPFSistema
             if (gridMostrar.SelectedItem != null)
             {
                 
-                ClienteController.ExcluirCliente(g)
+            //    ClienteController.ExcluirCliente(g)
             }
         }
     }

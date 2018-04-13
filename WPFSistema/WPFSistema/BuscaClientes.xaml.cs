@@ -28,39 +28,19 @@ namespace WPFSistema
 
         private void checkID_Checked(object sender, RoutedEventArgs e)
         {
+            //Desabilitando campos da parte busca por nome para usuário não mexer.
             checkNome.IsEnabled = false;
-            //Cliente cli =ClienteController.PesquisarPorID(int.Parse(txtCampo.Text));
-
-           // if (cli != null)
-            //{
-                
-            //}
-            //else
-            //{
-              //  MessageBox.Show("Cliente não encontrado !");
-                //this.Close();
-             //   MainWindow telaPrincipal = new MainWindow();
-               // telaPrincipal.ShowDialog();
-           // }
-
+            txtCampo.IsEnabled = false;
+            btnPesquisaNome.IsEnabled = false;
+            gridMostrar.IsEnabled = false;
         }
 
         private void checkNome_Checked(object sender, RoutedEventArgs e)
         {
+            //Desabilitando campos da parte busca por ID para usuário não mexer.
             checkID.IsEnabled = false;
-            List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
-
-            if (cli != null)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Cliente não encontrado !");
-                this.Close();
-                MainWindow telaPrincipal = new MainWindow();
-                telaPrincipal.ShowDialog();
-            }
+            txtCampoID.IsEnabled = false;
+            btnPesquisaID.IsEnabled = false;
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -70,5 +50,50 @@ namespace WPFSistema
             this.Close();
             telaPrincipal.ShowDialog();
         }
-    }
+
+        private void btnPesquisaNome_Click(object sender, RoutedEventArgs e)
+        {
+            List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);  //Enviando para controller o nome para pesquisar e retorna cliente. 
+
+            if (cli.Count > 0)
+            {
+                gridMostrar.ItemsSource = cli;  // se a lista de cliente existe, mostra no datagrid.
+            }else
+            {
+                MensagemErro();
+            }
+        }
+
+        private void btnPesquisaID_Click(object sender, RoutedEventArgs e)
+        {
+            Cliente cli = ClienteController.PesquisarPorID(int.Parse(txtCampoID.Text));  // envia o ID digitado para a controller retornar um cliente.
+            
+            if (cli!=null)
+           {
+                txtIDResult.Text= cli.ClienteID.ToString();  //Se cliente existe é passado cada conteúdo do cliente para as textbox.
+                txtNomeResult.Text = cli.Nome;
+                txtIdadeResult.Text = cli.Idade.ToString();
+                txtTelefoneResult.Text = cli.Telefone;
+            }else
+            {
+                MensagemErro();
+            }
+        }
+
+        private void MensagemErro()
+        {
+            MessageBox.Show("Cliente não encontrado !");   // se não existir nada na lista é mostrado mensagem .
+            this.Close();
+            MainWindow telaPrincipal = new MainWindow();  //volta para página principal.
+            telaPrincipal.ShowDialog();
+        }
+
+        private void btnInicializar_Click(object sender, RoutedEventArgs e)
+        {
+            BuscaClientes bc= new BuscaClientes();
+            this.Close();
+            bc.ShowDialog(); //abre nova janela para nova busca.
+        }
+    }       
 }
+

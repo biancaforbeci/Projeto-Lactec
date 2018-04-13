@@ -44,7 +44,7 @@ namespace WPFSistema
         private void btnListarPorIdade_Click(object sender, RoutedEventArgs e)
         {
             btnListarSimples.IsEnabled = false;   //desabilitando botão de listar clientes
-            List<Cliente> lista = ClienteController.ListarClientes();   // instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
+            List<Cliente> lista = ClienteController.ListarPorOrdenacao();   // instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
             gridMostrar.ItemsSource = lista; //enviando lista para datagrid.
         }
     }
