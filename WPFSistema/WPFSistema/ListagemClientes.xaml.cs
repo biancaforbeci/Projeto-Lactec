@@ -19,10 +19,13 @@ using System.Windows.Shapes;
 namespace WPFSistema
 {
     /// <summary>
-    /// Interaction logic for ListagemClientes.xaml
+    /// Essa classe é referente a tela de Listagem de clientes com os eventos dos cliques nos botões.
     /// </summary>
     public partial class ListagemClientes : Window
     {
+        /// <summary>
+        /// Construtor que inicializa componentes.
+        /// </summary>
         public ListagemClientes()
         {
             InitializeComponent();
@@ -38,7 +41,7 @@ namespace WPFSistema
 
         private void btnListarSimples_Click(object sender, RoutedEventArgs e)
         {
-            btnListarPorIdade.IsEnabled = false;
+            btnListarPorIdade.IsEnabled = false; // desabilita botão de lista ordenada.
             List<Cliente> lista =ClienteController.RetornaItens();// instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
             gridMostrar.Columns.RemoveAt(3); //removendo coluna de telefone
             gridMostrar.Columns.RemoveAt(2); //removendo coluna de idade.
@@ -47,7 +50,7 @@ namespace WPFSistema
 
         private void btnListarPorIdade_Click(object sender, RoutedEventArgs e)
         {
-            btnListarSimples.IsEnabled = false;
+            btnListarSimples.IsEnabled = false; //desabilita botão de lista simples.
             List<Cliente> lista = ClienteController.ListarPorOrdenacao();   // instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
             gridMostrar.ItemsSource = lista; //enviando lista para datagrid.
         }

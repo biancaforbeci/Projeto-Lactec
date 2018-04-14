@@ -18,10 +18,13 @@ using System.Windows.Shapes;
 namespace WPFSistema
 {
     /// <summary>
-    /// Interaction logic for ExcluirCliente.xaml
+    /// Essa classe é referente a tela de exclusão de clientes com os eventos dos cliques nos botões.
     /// </summary>
     public partial class ExcluirCliente : Window
     {
+        /// <summary>
+        /// Construtor que inicializa componentes.
+        /// </summary>
         public ExcluirCliente()
         {
             InitializeComponent();
@@ -39,6 +42,7 @@ namespace WPFSistema
 
         private void checkID_Checked(object sender, RoutedEventArgs e)
         {
+            //quando é marcado a exclusão por ID, o botão procurar e textbox é ativado e botão de check por nome é desativado.
             checkNome.IsEnabled = false;
             txtCampo.IsEnabled = true;
             btnProcurar.IsEnabled = true;
@@ -46,6 +50,7 @@ namespace WPFSistema
 
         private void checkNome_Checked(object sender, RoutedEventArgs e)
         {
+            //quando é marcado a exclusão por nome, o botão procurar e textbox é ativado e botão de check por ID é desativado.
             checkID.IsEnabled = false;
             txtCampo.IsEnabled = true;
             btnProcurar.IsEnabled = true;
@@ -55,7 +60,7 @@ namespace WPFSistema
         {
             if (cli.Count > 0)
             {
-                gridMostrar.ItemsSource = cli;
+                gridMostrar.ItemsSource = cli;  // se lista está com itens é mostrado no datagrid.
                 btnProcurar.IsEnabled = false;
             }
             else
@@ -72,8 +77,8 @@ namespace WPFSistema
             
             if ((checkNome.IsEnabled == true) && (VerificaCampos()==true))
             {
-              List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
-              VerificaExistencia(cli);
+              List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text); //Envia para controler o campo digitado.
+              VerificaExistencia(cli); //verifica se lista contém resultado
             }
             else if((checkID.IsEnabled==true) && (VerificaCampos()==true))
             {
@@ -83,21 +88,21 @@ namespace WPFSistema
         }
 
         private void gridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {   
             if (gridMostrar.SelectedItem != null)
             {
                 MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridMostrar.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
-                    {
+                    {      //Se confirmado a exclusão é pego o ID do cliente da linha selecionada.
                         int id = ((Cliente)gridMostrar.SelectedItem).ClienteID;
                         ClienteController.ExcluirCliente(id);
                         MessageBox.Show("Cliente excluído com sucesso");
                     }
                     catch(Exception erro)
                     {
-                        MessageBox.Show("ERRO: " + erro);
+                        MessageBox.Show("ERRO: " + erro);  
                     }
                 }
             }
@@ -119,11 +124,11 @@ namespace WPFSistema
         {
             string caracter = txtCampo.Text.Substring(0, 1);
             string verifica = "^[0-9]";
-            if ((checkNome.IsEnabled == true) && (Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$")))
-           {
+            if ((checkNome.IsEnabled == true) && (Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$"))) //verifica se o check por nome está ativo e vê se campo é caracter.
+            {
                 return true;
-           }else if((Regex.IsMatch(caracter, verifica) == true) && checkID.IsEnabled==true)
-           {
+           }else if((Regex.IsMatch(caracter, verifica) == true) && checkID.IsEnabled==true) //verifica se o check por ID está ativo e vê se campo é número.
+           {      
                 return true;
            }else
            {

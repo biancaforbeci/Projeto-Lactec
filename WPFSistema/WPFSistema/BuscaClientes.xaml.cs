@@ -18,10 +18,13 @@ using System.Windows.Shapes;
 namespace WPFSistema
 {
     /// <summary>
-    /// Interaction logic for BuscaClientes.xaml
+    /// Essa classe é referente a tela de busca de clientes com os eventos dos cliques nos botões.
     /// </summary>
     public partial class BuscaClientes : Window
     {
+        /// <summary>
+        /// Construtor que inicializa componentes e desabilita o botão de pesquisa e textbox.
+        /// </summary>
         public BuscaClientes()
         {
             InitializeComponent();
@@ -60,7 +63,7 @@ namespace WPFSistema
 
             if (checkNome.IsEnabled==true)
             {
-               if((!Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$")))
+               if((!Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$")))  //verifica se campo possui apenas caracter.
                {
                     MessageBox.Show("Só podem existir caracteres.");
                }
@@ -70,7 +73,7 @@ namespace WPFSistema
                    VerificaLista(cli); //envia para verificação a lista
                }          
                 
-            }else if (Regex.IsMatch(caracter, verifica) == true)
+            }else if (Regex.IsMatch(caracter, verifica) == true)   //verifica se campo possui apenas números.
             {
                 List<Cliente> cli = ClienteController.ClienteListaID(int.Parse(txtCampo.Text));  //Enviando para controller o nome para pesquisar e retorna cliente. 
                 VerificaLista(cli); //envia para verificação a lista
@@ -101,6 +104,7 @@ namespace WPFSistema
             if (cli.Count > 0)  //verifica se lista está vazia.
             {
                 gridMostrar.ItemsSource = cli;
+                btnPesquisa.IsEnabled = false;
             }
             else
             {

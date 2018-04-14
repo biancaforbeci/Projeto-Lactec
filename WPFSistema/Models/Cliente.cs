@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    /// <summary>
+    /// Essa classe possui os atributos que um cliente têm, sendo a tabela CLientes do banco de dados.
+    /// </summary>
     public class Cliente
     {
         public int ClienteID { get; set; }

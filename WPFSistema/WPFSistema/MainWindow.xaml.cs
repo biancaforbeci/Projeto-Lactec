@@ -16,10 +16,13 @@ using System.Windows.Shapes;
 namespace WPFSistema
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Essa classe é referente a tela principal, com eventos dos cliques nos botões
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Esse é um construtor da tela principal do sistema, no qual inicializa os componentes.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -60,6 +63,6 @@ namespace WPFSistema
             ListagemClientes telaListas = new ListagemClientes();
             this.Close();
             telaListas.ShowDialog();
-        }
+        }        
     }
 }

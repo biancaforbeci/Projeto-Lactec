@@ -18,10 +18,13 @@ using System.Windows.Shapes;
 namespace WPFSistema
 {
     /// <summary>
-    /// Interaction logic for CadastroCliente.xaml
+    /// Essa classe é referente a tela de cadastro de clientes com os eventos dos cliques nos botões.
     /// </summary>
     public partial class CadastroCliente : Window
     {
+        /// <summary>
+        /// Construtor que inicializa componentes.
+        /// </summary>
         public CadastroCliente()
         {
             InitializeComponent();
