@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,23 +69,17 @@ namespace WPFSistema
 
         private void btnProcurar_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCampo.Text != null)
+            
+            if ((checkNome.IsEnabled == true) && (VerificaCampos()==true))
             {
-                if (checkNome.IsEnabled == true)
-                {
-                    List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
-                    VerificaExistencia(cli);
-                }
-                else
-                {
-                    List<Cliente> listaID = ClienteController.ClienteListaID(int.Parse(txtCampo.Text));
-                    VerificaExistencia(listaID);
-                }
+              List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);
+              VerificaExistencia(cli);
             }
-            else
+            else if((checkID.IsEnabled==true) && (VerificaCampos()==true))
             {
-                MessageBox.Show("Erro, campo em branco !", "ERRO");
-            }
+              List<Cliente> cli = ClienteController.ClienteListaID(int.Parse(txtCampo.Text));
+              VerificaExistencia(cli);
+            }                             
         }
 
         private void gridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -118,6 +113,24 @@ namespace WPFSistema
         {
             checkID.IsEnabled = true;
             txtCampo.IsEnabled = false;
+        }
+
+        private bool VerificaCampos()
+        {
+            string caracter = txtCampo.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
+            if ((checkNome.IsEnabled == true) && (Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$")))
+           {
+                return true;
+           }else if((Regex.IsMatch(caracter, verifica) == true) && checkID.IsEnabled==true)
+           {
+                return true;
+           }else
+           {
+                MessageBox.Show("ERRO, verifique se está correto o que foi digitado.");
+                return false;    
+           }                     
+
         }
     }
 }
