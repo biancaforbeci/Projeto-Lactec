@@ -2,6 +2,8 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,21 +38,25 @@ namespace WPFSistema
 
         private void btnListarSimples_Click(object sender, RoutedEventArgs e)
         {
-            btnListarPorIdade.IsEnabled = false;   //desabilitando botão de listar por ordenação
+            btnListarPorIdade.IsEnabled = false;
             List<Cliente> lista =ClienteController.RetornaItens();// instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
-            var novaListUsuario = lista.Select(Cliente => new
-            {
-                ClienteID = Cliente.ClienteID,
-                Nome = Cliente.Nome                
-            }).ToList();
-            gridMostrar.DataContext = novaListUsuario; //enviando lista para datagrid.
+            gridMostrar.Columns.RemoveAt(3); //removendo coluna de telefone
+            gridMostrar.Columns.RemoveAt(2); //removendo coluna de idade.
+            gridMostrar.ItemsSource = lista; //enviando lista para datagrid.
         }
 
         private void btnListarPorIdade_Click(object sender, RoutedEventArgs e)
         {
-            btnListarSimples.IsEnabled = false;   //desabilitando botão de listar clientes
+            btnListarSimples.IsEnabled = false;
             List<Cliente> lista = ClienteController.ListarPorOrdenacao();   // instanciando lista com o retorno de uma lista de clientes com ID e nome do banco 
             gridMostrar.ItemsSource = lista; //enviando lista para datagrid.
+        }
+
+        private void btnNovaListagem_Click(object sender, RoutedEventArgs e)
+        {
+            ListagemClientes lc = new ListagemClientes();
+            this.Close();
+            lc.ShowDialog(); //abre nova janela para nova busca.
         }
     }
 }

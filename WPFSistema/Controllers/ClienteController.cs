@@ -28,11 +28,6 @@ namespace Controllers
                 return null;
         }
 
-        public static Cliente PesquisarPorID(int idCliente)
-        {
-         return ContextoSingleton.Instancia.Clientes.Find(idCliente);
-        }
-
         public static void ExcluirCliente(int idCliente)
         {
 
@@ -55,9 +50,7 @@ namespace Controllers
 
         public static List<Cliente> RetornaItens()
         {
-            var result = ContextoSingleton.Instancia.Clientes.SqlQuery(@"SELECT ClienteID, Nome from Clientes").ToList();
-                       
-            return result;
+            return ContextoSingleton.Instancia.Clientes.ToList();           
         }
 
         public static List<Cliente> ClienteListaID(int id)
@@ -71,7 +64,6 @@ namespace Controllers
             else
                 return null;
         }
-
     }
 }
 

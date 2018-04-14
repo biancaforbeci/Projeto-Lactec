@@ -55,13 +55,14 @@ namespace WPFSistema
             if (cli.Count > 0)
             {
                 gridMostrar.ItemsSource = cli;
+                btnProcurar.IsEnabled = false;
             }
             else
             {
                 MessageBox.Show("Cliente não encontrado !");
                 MainWindow telaPrincipal = new MainWindow();
-                telaPrincipal.ShowDialog();
                 this.Close();
+                telaPrincipal.ShowDialog();
             }
         }
 
@@ -110,11 +111,13 @@ namespace WPFSistema
         private void checkID_Unchecked(object sender, RoutedEventArgs e)
         {
             checkNome.IsEnabled = true;
+            txtCampo.IsEnabled = false;
         }
 
         private void checkNome_Unchecked(object sender, RoutedEventArgs e)
         {
             checkID.IsEnabled = true;
+            txtCampo.IsEnabled = false;
         }
     }
 }

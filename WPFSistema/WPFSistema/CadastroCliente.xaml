@@ -16,15 +16,15 @@
 
         <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
         <Canvas>
-            <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="103" FontFamily="Arial" FontSize="18" RenderTransformOrigin="1.192,0.679"/>
-            <Label Content="Idade" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="172" Canvas.Top="156" FontSize="18" FontFamily="Arial"/>
-            <Label Content="Telefone" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="216" RenderTransformOrigin="0.38,0.52" FontSize="18" FontFamily="Arial"/>
-            <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top" Canvas.Left="207" Canvas.Top="10"/>
-            <TextBox x:Name="txtNome" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="111" Width="120"/>
-            <TextBox x:Name="txtIdade" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="164" Width="120"/>
-            <TextBox x:Name="txtTelefone" Height="23" Canvas.Left="319" TextWrapping="Wrap" Canvas.Top="224" Width="120"/>
-            <Button x:Name="btnSalvar" Content="Salvar" Canvas.Left="172" Canvas.Top="328" Width="75" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="364" Canvas.Top="328" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
+            <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="161" Canvas.Top="111" FontFamily="Arial" FontSize="20" RenderTransformOrigin="1.192,0.679"/>
+            <Label Content="Idade" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="161" Canvas.Top="165" FontSize="20" FontFamily="Arial"/>
+            <Label Content="Telefone" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="161" Canvas.Top="225" RenderTransformOrigin="0.38,0.52" FontSize="20" FontFamily="Arial"/>
+            <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top" Canvas.Left="202" Canvas.Top="25"/>
+            <TextBox x:Name="txtNome" Height="33" Canvas.Left="353" TextWrapping="Wrap" Canvas.Top="111" Width="194" RenderTransformOrigin="-0.041,0.604"/>
+            <TextBox x:Name="txtIdade" Height="33" Canvas.Left="353" TextWrapping="Wrap" Canvas.Top="165" Width="194"/>
+            <TextBox x:Name="txtTelefone" Height="33" Canvas.Left="353" TextWrapping="Wrap" Canvas.Top="225" Width="194"/>
+            <Button x:Name="btnSalvar" Content="Salvar" Canvas.Left="161" Canvas.Top="313" Width="98" FontFamily="Arial" FontSize="20" Click="btnSalvar_Click" Height="42"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="436" Canvas.Top="313" Width="98" FontFamily="Arial" FontSize="20" Click="btnVoltar_Click" Height="42" RenderTransformOrigin="0.986,0.668"/>
         </Canvas>
 
     </Grid>

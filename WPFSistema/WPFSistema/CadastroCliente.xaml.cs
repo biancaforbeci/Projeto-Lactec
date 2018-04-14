@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,8 +30,11 @@ namespace WPFSistema
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             //Criando novo cliente e chamando o método de salvar
-            Cliente cliente = SalvaCliente();
-            ClienteController.SalvarCliente(cliente);            
+            if (VerificandoCampos() == true)
+            {
+                Cliente cliente = SalvaCliente();
+                ClienteController.SalvarCliente(cliente);
+            }    
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -51,5 +55,31 @@ namespace WPFSistema
             return cli;
         }
 
+        private bool VerificandoCampos()
+        {
+            string caracterIdade = txtIdade.Text.Substring(0, 1);
+            string caracterTelefone = txtTelefone.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
+
+            if ((!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$") || (txtNome.Text==null)))
+            {
+                MessageBox.Show("Só podem existir caracteres e não pode estar vazio.");
+                return false;
+            }
+            else if (!Regex.IsMatch(caracterIdade, verifica) == true || (txtIdade.Text == null))
+            {
+                MessageBox.Show("Só podem existir números no campo idade e não pode estar vazio.");
+                return false;
+            }
+            else if (!Regex.IsMatch(caracterTelefone, verifica) == true || (txtTelefone.Text == null))
+            {
+                MessageBox.Show("Só podem existir números no campo telefone e não pode estar vazio.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

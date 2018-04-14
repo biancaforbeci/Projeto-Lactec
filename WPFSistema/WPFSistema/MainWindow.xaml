@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFSistema"
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource estiloJanela}">
-    <Grid>   
+    <Grid Margin="0,0,2,0">
 
         <Menu Width="332" 
         Height="50"
@@ -50,9 +50,9 @@
         </Menu>
 
 
-        <Canvas HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
-            <Image Height="206" Width="475" Source="Imagem/logos-lactec-v1.png" HorizontalAlignment="Left" Canvas.Left="54" Canvas.Top="88"/>
-            <Label Content="Bem-Vindo" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontFamily="Arial" Canvas.Left="97" FontStyle="Italic"/>
+        <Canvas HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="610" Margin="59,81,0,0">
+            <Image Height="206" Width="475" Source="Imagem/logos-lactec-v1.png" HorizontalAlignment="Left" Canvas.Left="74" Canvas.Top="127"/>
+            <Label Content="Bem-Vindo" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontFamily="Arial" Canvas.Left="113" FontStyle="Italic" Canvas.Top="29"/>
         </Canvas>
 
     </Grid>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,23 +25,24 @@ namespace WPFSistema
         public BuscaClientes()
         {
             InitializeComponent();
+            btnPesquisa.IsEnabled = false;
+            txtCampo.IsEnabled = false;
         }
 
         private void checkID_Checked(object sender, RoutedEventArgs e)
         {
             //Desabilitando campos da parte busca por nome para usuário não mexer.
             checkNome.IsEnabled = false;
-            txtCampo.IsEnabled = false;
-            btnPesquisaNome.IsEnabled = false;
-            gridMostrar.IsEnabled = false;
+            txtCampo.IsEnabled = true;
+            btnPesquisa.IsEnabled = true;
         }
 
         private void checkNome_Checked(object sender, RoutedEventArgs e)
         {
-            //Desabilitando campos da parte busca por ID para usuário não mexer.
+            //Desabilitando campo da parte busca por ID para usuário não mexer.
             checkID.IsEnabled = false;
-            txtCampoID.IsEnabled = false;
-            btnPesquisaID.IsEnabled = false;
+            txtCampo.IsEnabled = true;
+            btnPesquisa.IsEnabled = true;
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -51,40 +53,39 @@ namespace WPFSistema
             telaPrincipal.ShowDialog();
         }
 
-        private void btnPesquisaNome_Click(object sender, RoutedEventArgs e)
+        private void btnPesquisa_Click(object sender, RoutedEventArgs e)
         {
-            List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);  //Enviando para controller o nome para pesquisar e retorna cliente. 
+            string caracter = txtCampo.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
 
-            if (cli.Count > 0)
+            if (checkNome.IsEnabled==true)
             {
-                gridMostrar.ItemsSource = cli;  // se a lista de cliente existe, mostra no datagrid.
-            }else
+               if((!Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$")))
+               {
+                    MessageBox.Show("Só podem existir caracteres.");
+               }
+                else
+               {
+                   List<Cliente> cli = ClienteController.PesquisarPorNome(txtCampo.Text);  //Enviando para controller o nome para pesquisar e retorna cliente. 
+                   VerificaLista(cli); //envia para verificação a lista
+               }          
+                
+            }else if (Regex.IsMatch(caracter, verifica) == true)
             {
-                MensagemErro();
+                List<Cliente> cli = ClienteController.ClienteListaID(int.Parse(txtCampo.Text));  //Enviando para controller o nome para pesquisar e retorna cliente. 
+                VerificaLista(cli); //envia para verificação a lista
             }
-        }
-
-        private void btnPesquisaID_Click(object sender, RoutedEventArgs e)
-        {
-            Cliente cli = ClienteController.PesquisarPorID(int.Parse(txtCampoID.Text));  // envia o ID digitado para a controller retornar um cliente.
-            
-            if (cli!=null)
-           {
-                txtIDResult.Text= cli.ClienteID.ToString();  //Se cliente existe é passado cada conteúdo do cliente para as textbox.
-                txtNomeResult.Text = cli.Nome;
-                txtIdadeResult.Text = cli.Idade.ToString();
-                txtTelefoneResult.Text = cli.Telefone;
-            }else
+            else
             {
-                MensagemErro();
-            }
-        }
+                MessageBox.Show("Só podem existir números.");
+            }                       
+        }        
 
         private void MensagemErro()
         {
-            MessageBox.Show("Cliente não encontrado !");   // se não existir nada na lista é mostrado mensagem .
-            this.Close();
+            MessageBox.Show("Cliente não encontrado !");  // se não existir nada na lista é mostrado mensagem .
             MainWindow telaPrincipal = new MainWindow();  //volta para página principal.
+            this.Close();
             telaPrincipal.ShowDialog();
         }
 
@@ -94,6 +95,30 @@ namespace WPFSistema
             this.Close();
             bc.ShowDialog(); //abre nova janela para nova busca.
         }
+
+        private void VerificaLista(List<Cliente> cli)
+        {
+            if (cli.Count > 0)  //verifica se lista está vazia.
+            {
+                gridMostrar.ItemsSource = cli;
+            }
+            else
+            {
+                MensagemErro();
+            }
+        }
+
+        private void checkID_Unchecked(object sender, RoutedEventArgs e)
+        {
+            checkNome.IsEnabled = true;
+            txtCampo.IsEnabled = false;
+        }
+
+        private void checkNome_Unchecked(object sender, RoutedEventArgs e)
+        {
+            checkID.IsEnabled = true;
+            txtCampo.IsEnabled = false;
+        }        
     }       
 }
 
