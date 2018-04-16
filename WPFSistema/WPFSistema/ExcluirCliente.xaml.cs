@@ -91,7 +91,7 @@ namespace WPFSistema
         {   
             if (gridMostrar.SelectedItem != null)
             {
-                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridMostrar.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do cliente " + ((Cliente)gridMostrar.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -127,7 +127,7 @@ namespace WPFSistema
             if ((checkNome.IsEnabled == true) && (Regex.IsMatch(txtCampo.Text, @"^[a-zA-Z]+$"))) //verifica se o check por nome está ativo e vê se campo é caracter.
             {
                 return true;
-           }else if((Regex.IsMatch(caracter, verifica) == true) && checkID.IsEnabled==true) //verifica se o check por ID está ativo e vê se campo é número.
+           }else if((Regex.IsMatch(caracter, verifica)  && checkID.IsEnabled==true)) //verifica se o check por ID está ativo e vê se campo é número.
            {      
                 return true;
            }else

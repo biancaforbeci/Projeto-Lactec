@@ -19,8 +19,7 @@ namespace Models.DAL
         /// <remarks>Possui dentro dele uma inicialização do Contexto, que deve dropar quando model cliente for alterada. </remarks>
         public Contexto() : base("stringConn")
         {
-            Database.SetInitializer(
-                new DropCreateDatabaseIfModelChanges<Contexto>());
+            
         }
 
         public DbSet<Cliente> Clientes { get; set; }

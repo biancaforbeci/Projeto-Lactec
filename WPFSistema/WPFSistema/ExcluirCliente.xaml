@@ -23,6 +23,7 @@
             <Label Content="Critério de Exclusão" RenderTransformOrigin="1.703,1.523" Canvas.Left="83" Canvas.Top="63" Width="156" FontFamily="Arial" FontSize="16"/>
             <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="314" Canvas.Top="375" Width="75" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
             <Button x:Name="btnProcurar" Content="Procurar" Canvas.Left="565" Canvas.Top="91" Width="75" FontFamily="Arial" FontSize="16" Height="32" Click="btnProcurar_Click"/>
+            <Label Content="Clique no cliente que deseja excluir" Canvas.Left="225" Canvas.Top="132" Width="266" FontFamily="Arial" FontSize="14"/>
         </Canvas>
 
     </Grid>

@@ -8,7 +8,7 @@
         Title="MainWindow" Style="{StaticResource estiloJanela}">
     <Grid Margin="0,0,2,0">
 
-        <Menu Width="332" 
+        <Menu Width="414" 
         Height="50"
         Margin="10,10,0,0" 
         VerticalAlignment="Top"
@@ -40,7 +40,7 @@
                 <MenuItem x:Name="ItemExcluir" Header="Excluir" IsCheckable="true" Click="ItemExcluir_Click" />
             </MenuItem>
 
-            <MenuItem Header="Área de Busca" FontFamily="Arial" FontSize="16">
+            <MenuItem Header="Área de Busca e Listagem" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="ItemBuscaClientes" Header="Buscar Clientes" Click="ItemBuscaClientes_Click"/>
                 <MenuItem x:Name="ItemListasClientes" Header="Listagem de Clientes" Click="ItemListasClientes_Click"/>
             </MenuItem>

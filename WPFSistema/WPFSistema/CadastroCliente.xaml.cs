@@ -64,17 +64,17 @@ namespace WPFSistema
             string caracterTelefone = txtTelefone.Text.Substring(0, 1);
             string verifica = "^[0-9]";
 
-            if ((!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$") || (txtNome.Text==null)))
+            if ((!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$") || (txtNome.Text.Trim().Equals(""))))
             {
                 MessageBox.Show("Só podem existir caracteres e não pode estar vazio.");
                 return false;
             }
-            else if (!Regex.IsMatch(caracterIdade, verifica) == true || (txtIdade.Text == null))
+            else if (!Regex.IsMatch(caracterIdade, verifica) || (txtIdade.Text.Trim().Equals("")))
             {
                 MessageBox.Show("Só podem existir números no campo idade e não pode estar vazio.");
                 return false;
             }
-            else if (!Regex.IsMatch(caracterTelefone, verifica) == true || (txtTelefone.Text == null))
+            else if (!Regex.IsMatch(caracterTelefone, verifica) || (txtTelefone.Text.Trim().Equals("")))
             {
                 MessageBox.Show("Só podem existir números no campo telefone e não pode estar vazio.");
                 return false;
